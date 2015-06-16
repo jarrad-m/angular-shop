@@ -18,9 +18,8 @@
 </head>
 <body ng-controller="StoreController as store">
 
-	<div class="row ">
-
-		<div class="column">
+	<div class="row"> 
+	<div class="col-lg-12">
 
 			<h1>{{"My Sound and Light Page"}}</h1>
 
@@ -28,6 +27,8 @@
 	
 	<!-- Navigation Tabs here  -->
 	<section class="tab" ng-controller="TabController as tab">	
+
+
 
 		<ul class= "nav nav-tabs">
 
@@ -49,38 +50,58 @@
 
 		</div>
 
-		<div class="tab" ng-show="tab.isSet(2)">
+		<div class="row" ng-show="tab.isSet(2)">
+
+			<div class="col-lg-12">
+
+				<h1>Hello asdfasd fadsf a dsfasdf asdfasd fa sdfasd </h1>
 			  	<!-- use ng repeat here for all -->
-			<div class="product span8" ng-repeat="product in store.products" ng-hide="product.soldOut || product.category === 'sound' || product.category === 'package">
+				<div class="row" ng-repeat="product in store.products" ng-hide="product.soldOut || product.category === 'sound' || product.category === 'package'">
 
+					<div class="product col-lg-4">
 
-			  	<h3>{{product.name}}</h3>
+					  	<div class="gallery" ng-controller="GalleryController as gallery" ng-show="product.images.length > 0">
+		      				
+		      				<div class="row">
 
-			  	<em class="pull-right">{{product.price | currency}}</em>
+			      				<div class="">
+			      					
+			      					<img ng-src="{{product.images[gallery.current]}}" />
+			    				
+			    				</div>
 
-			  	<button  ng-show="product.canPurchase">Add to Cart</button>			
+			    			</div>
 
+		    				<div class="row">
+			    				
+			    				<div class="col-xs-3" ng-repeat="image in product.images">
+			      					
+			      					<img ng-src="{{image}}"  />   					
+			     					
+			    				</div>
 
-		  		<div class="gallery" ng-show="product.images.length > 0;">
-      				<div class="img-wrap">
-      					<img ng-src="{{product.images[0]}}" />
-    				</div>
+			    			</div> 
 
-    				<ul class="list inline thumbs" ng-repeat="image in product.images">
-      					<li class="pull-left thumbnail" >
-        					<img style="width: 50px; height: 50px"  ng-src="{{image}}" />
-     					</li>
-    				</ul>
+		    			</div>
 
-    			</div>
+		    		</div>
 
-					
+					<div class="product col-lg-8">	
+										
+						<h3>{{product.name}}</h3>
+
+					  	<em>{{product.price | currency}}</em>
+
+					  	<button class="pull-right" ng-show="product.canPurchase">Add to Cart</button>			
 								
-				
-				
-				<! -- <button class="pull-right" ng-show="product.canPurchase">Add to Cart</button>	 -->		
+
+					</div>
+
+				</div>
 
 			</div>
+
+			
 
 		</div>
 

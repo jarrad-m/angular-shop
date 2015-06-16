@@ -15,6 +15,18 @@
     
   });
 
+	app.controller('GalleryController', function() {
+    	this.current = 0;
+    	this.setCurrent = function(assignCurrent) {
+     		if (assignCurrent === null ) {
+        		this.current = 0;
+      		}
+      		else {
+       			this.current = assignCurrent;
+      		}
+    	};
+  	});
+
 	
 
 	var lightAndSound = [
