@@ -1,0 +1,50 @@
+<div class="col-lg-12">
+
+	<h1>Lights</h1>
+  	<!-- use ng repeat here for all -->
+	<div class="row" ng-repeat="product in store.products" ng-hide="product.soldOut || product.category === 'sound' || product.category === 'package'">
+
+		<div class="product col-lg-4">
+
+		  	<div  class="gallery" ng-controller="GalleryController as gallery"  ng-show="product.images.length > 0">
+  				
+  				<div class="row">
+
+      				<div class="">
+      					
+      					<img ng-src="{{product.images[gallery.current]}}" />
+    				
+    				</div>
+
+    			</div>
+
+				<div class="row">
+    				
+    				<div class="col-xs-3" ng-repeat="image in product.images">
+      					
+      					<img ng-src="{{image}}" />   					
+     					
+    				</div>
+
+    			</div> 
+
+			</div>
+
+		</div>
+
+		<div class="product col-lg-8">	
+							
+			<h3>{{product.name}}</h3>
+
+		  	<em>{{product.price | currency}}</em>
+		  	
+
+		  	<button class="pull-right"  ng-show="product.canPurchase" ng-click="shoppingBasket.addToBasket(product, 1)">Add to Cart</button>
+
+
+
+		</div>
+
+	</div>
+
+</div>

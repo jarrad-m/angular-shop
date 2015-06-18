@@ -16,141 +16,45 @@
 	
 	
 </head>
-<body ng-controller="StoreController as store">
+<body ng-controller="StoreController as store" >
 
-	<div class="row"> 
-	<div class="col-lg-12">
+	<div class="row" ng-controller="ShoppingBasketController as shoppingBasket"> 
+		<div class="col-lg-12">
 
 			<h1>{{"My Sound and Light Page"}}</h1>
 
-		
-	
-	<!-- Navigation Tabs here  -->
-	<section class="tab" ng-controller="TabController as tab">	
-
-
-
-		<ul class= "nav nav-tabs">
-
-			  <li ng-class="{active:tab.isSet(1) }" class="tab-title"><a href ng-click="tab.setTab(1)">Sound/Audio</a></li>
-			  <li ng-class="{active:tab.isSet(2) }" class="tab-title"><a href ng-click="tab.setTab(2)">Lighting Solutions</a></li>
-			  <li ng-class="{active:tab.isSet(3) }" class="tab-title"><a href ng-click="tab.setTab(3)">Package Deals</a></li>
-			  <li ng-class="{active:tab.isSet(4) }" class="tab-title"><a href ng-click="tab.setTab(4)">About Us</a></li>
-			  <li ng-class="{active:tab.isSet(5) }" class="tab-title"><a href ng-click="tab.setTab(5)">Contact Us</a></li>
-
-		</ul>
-
-		<div class="tab" ng-show="tab.isSet(1)">
-				<!-- use ng repeat here-->
-			<bold> Product Name </bold>
-
-			<h4>Description</h4>
-
-			<p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
-
-		</div>
-
-		<div class="row" ng-show="tab.isSet(2)">
-
-			<div class="col-lg-12">
-
-				<h1>Hello asdfasd fadsf a dsfasdf asdfasd fa sdfasd </h1>
-			  	<!-- use ng repeat here for all -->
-				<div class="row" ng-repeat="product in store.products" ng-hide="product.soldOut || product.category === 'sound' || product.category === 'package'">
-
-					<div class="product col-lg-4">
-
-					  	<div class="gallery" ng-controller="GalleryController as gallery" ng-show="product.images.length > 0">
-		      				
-		      				<div class="row">
-
-			      				<div class="">
-			      					
-			      					<img ng-src="{{product.images[gallery.current]}}" />
-			    				
-			    				</div>
-
-			    			</div>
-
-		    				<div class="row">
-			    				
-			    				<div class="col-xs-3" ng-repeat="image in product.images">
-			      					
-			      					<img ng-src="{{image}}"  />   					
-			     					
-			    				</div>
-
-			    			</div> 
-
-		    			</div>
-
-		    		</div>
-
-					<div class="product col-lg-8">	
-										
-						<h3>{{product.name}}</h3>
-
-					  	<em>{{product.price | currency}}</em>
-
-					  	<button class="pull-right" ng-show="product.canPurchase">Add to Cart</button>			
-								
-
-					</div>
-
-				</div>
-
-			</div>
-
 			
-
-		</div>
-
-
-		<div class="tab" ng-show="tab.isSet(3)">
-		    <!-- use ng repeat here-->
-		  	<bold> Package Deal Product Name </bold>
-		  	
-		  	<h4>Description</h4>
-
-			<blockquote>{{product.description}}</blockquote>
-			<p>This is the third panel of the basic tab example. This is the second panel of the basic tab example.</p>
-		</div>
-
-	  	<div class="tab" ng-show="tab.isSet(4)">
-		  	<bold> About Us </bold>
-
-		  	<p>We'd love to hear what you have to say</p>
-
-			 
-			<form>
-			  <div class="row">
-			    <div class="small-8 columns">
-			      <div class="row">
-			        <div class="small-3 columns">
-			          <label for="right-label" class="right inline">Label</label>
-			        </div>
-			        <div class="small-6 columns">
-			          <input type="text" id="right-label" placeholder="Inline Text Input">
-			        </div>
-			        <div class="small-3 columns">
-			        	<a href="#" class="button small radius">Submit</a>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			</form>
-
-		    <p>We're the best in Perth </p>
-	  	</div>
-
-	  	<div class="tab" ng-show="tab.isSet(5)">
-	    	<p>This is the fifth panel of the basic tab example. </p>
-	  	</div>
 		
+			<!-- Navigation Tabs here  -->
+			<section class="tab" ng-controller="TabController as tab" >	
 
-	</section>	
+				<ul class= "nav nav-tabs">
 
-	</div>
+				  <li ng-class="{active:tab.isSet(1) }" class="tab-title"><a href ng-click="tab.setTab(1)">Sound/Audio</a></li>
+				  <li ng-class="{active:tab.isSet(2) }" class="tab-title"><a href ng-click="tab.setTab(2)">Lighting Solutions</a></li>
+				  <li ng-class="{active:tab.isSet(3) }" class="tab-title"><a href ng-click="tab.setTab(3)">Package Deals</a></li>
+				  <li ng-class="{active:tab.isSet(4) }" class="tab-title"><a href ng-click="tab.setTab(4)">About Us</a></li>
+				  <li ng-class="{active:tab.isSet(5) }" class="tab-title"><a href ng-click="tab.setTab(5)">Contact Us</a></li>
+				  <li ng-class="{active:tab.isSet(6) }" class="tab-title pull-right"><a href ng-click="tab.setTab(6)">Shopping Cart {{shoppingBasket.cost | currency}}</a></li>
+
+
+				</ul>
+
+				<sound-tab ng-show="tab.isSet(1)" ></sound-tab>
+
+				<lights-tab ng-show="tab.isSet(2)"></lights-tab>
+					
+				<package-tab ng-show="tab.isSet(3)" ></package-tab>
+
+			  	<about-tab ng-show="tab.isSet(4)"></about-tab>
+
+			  	<contact-tab ng-show="tab.isSet(5)"></contact-tab>
+				
+				<shopping-cart-tab ng-show="tab.isSet(6)"></shopping-cart-tab>
+			    	
+			</section>	
+
+		</div>
 	</div>
 	
 </body>
