@@ -3,7 +3,6 @@
 		app.controller('StoreController', ['$http',  function($http) {
 			var store = this;
 			//store.products = [];
-
 			$http.get('js/products.json').success(function(data) {
 				store.products = data;
 			});
@@ -35,30 +34,45 @@
     	};
   	});
 
-  	app.controller('ShoppingBasketController', function() {
+  	app.controller('ShoppingBasketController', ['$log', function($log) {
   		this.product = {};
   		this.basket = [];
   		this.cost = 0;
   		this.addToBasket = function(product, amount) {
   			var basketItem = [product, amount];
   				
-  			this.cost += product.price * amount;
+  			//this.cost += product.price * amount;
   			this.basket.push(basketItem);
-  			
+
   		};
+
+  		//this breaks the code if amount is greater than 1 at the moment
+  		this.removeFromBasket = function(product) {
+  			for (var i = this.basket.length - 1; i >= 0; i-- ) {
+  				        			$log.debug("hello")
+
+    			if (this.basket[i][0].name === product) {
+    				$log.debug("got a match");
+        			this.basket.splice(i, 1);
+        			this.getTotalCost();
+        			break;       
+				}
+			}
+  		};
+
 
   		//need to implement this later and remove cost calculations in addToBasket
   		this.getTotalCost = function() {
-  			
-  			for (i = 0; i < basket.length(); i++) {
-  				cost += basket[i][0].price * basket[i][1]; 
-  				console.log(cost);
-
+  			var calcCost = 0;
+  			for (var i = 0; i < this.basket.length; i++) {
+  				
+  				calcCost += this.basket[i][0].price * this.basket[i][1]; 
   			}
-  			return cost;
+  			this.cost = calcCost
+  			return this.cost;
 
   		};
-  	});
+  	}]);
 
 	app.directive("lightsTab", function() {
     	return {

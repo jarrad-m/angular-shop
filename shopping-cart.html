@@ -1,7 +1,9 @@
 <div ng-repeat="basketItem in shoppingBasket.basket">
 
+	<button class="pull-left tiny" ng-click="shoppingBasket.removeFromBasket(basketItem[0].name)">Remove</button>
 	<bold>{{basketItem[0].name}}		</bold>
-		<bold>{{basketItem[1]}}  </bold>  {{basketItem[0].price | currency}}
+	<bold>{{basketItem[1]}}  </bold>  {{basketItem[0].price | currency}}
+
 
 </div>
 <h2 class="pull-right">TOTAL = {{shoppingBasket.cost | currency}}</h2>

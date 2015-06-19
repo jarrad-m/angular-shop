@@ -7,8 +7,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 	<link href="css/foundation.min.css" rel="stylesheet" media="screen">
+	<!--
 	<link href="css/app-screen.css" rel="stylesheet" media="screen"> 
 	<link href="css/app-print.css" rel="stylesheet" media="screen">
+	 -->
 	<script src="js/jquery.js" </script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="js/angular.min.js" type="text/javascript"></script>
@@ -35,7 +37,7 @@
 				  <li ng-class="{active:tab.isSet(3) }" class="tab-title"><a href ng-click="tab.setTab(3)">Package Deals</a></li>
 				  <li ng-class="{active:tab.isSet(4) }" class="tab-title"><a href ng-click="tab.setTab(4)">About Us</a></li>
 				  <li ng-class="{active:tab.isSet(5) }" class="tab-title"><a href ng-click="tab.setTab(5)">Contact Us</a></li>
-				  <li ng-class="{active:tab.isSet(6) }" class="tab-title pull-right"><a href ng-click="tab.setTab(6)">Shopping Cart {{shoppingBasket.cost | currency}}</a></li>
+				  <li ng-class="{active:tab.isSet(6) }" class="tab-title pull-right"><a href ng-click="tab.setTab(6)">Shopping Cart {{shoppingBasket.getTotalCost() | currency}}</a></li>
 
 
 				</ul>
