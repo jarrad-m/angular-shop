@@ -1,8 +1,15 @@
 (function(){
 	var app = angular.module('lightStore', []);
-		app.controller('StoreController', function() {
-			this.products = lightAndSound;
-		});
+		app.controller('StoreController', ['$http',  function($http) {
+			var store = this;
+			//store.products = [];
+
+			$http.get('js/products.json').success(function(data) {
+				store.products = data;
+			});
+
+			//this.products = lightAndSound;
+		}]);
 
 	app.controller('TabController', function() {
     	this.tab = 1;
@@ -97,111 +104,6 @@
 
 
 
-    // needs to be moved to a JSON file at some stage
-	var lightAndSound = [
-	{ 
-		name: 'Tri-phase', 
-		price: 50.00,
-		description: "		",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'light', //options are light, sound or package
-		images: [
-			"images/image1.jpg",
-			"images/image2.jpg",
-			"images/image4.jpg"
-		]    		
-
-   	},
-
-	{ 
-		name: 'Invader', 
-		price: 65.00,
-		description: "",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'light',
-   		images: [
-			"images/image6.jpg"
-		]
-   	},
-
-   	{ 
-		name: 'Strobe', 
-		price: 20.00,
-		description: "",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'light',
-		images: [
-			"images/image7.jpg"
-		]
-
-   	},
-
-   	{ 
-		name: 'Traffic Light', 
-		price: 50.00,
-		description: "",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'light',
-   		images: [
-			"images/image8.jpg"
-		]
-
-   	},
-
-   	{ 
-		name: 'Deluxe Speaker & Lighting Set', 
-		price: 230.00,
-		description: "		",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'package', 
-		images: [
-			"images/image9.jpg"			
-		]    		
-   	},
-
-   	{ 
-		name: 'Twin Speaker Set 1000RMS', 
-		price: 170.00,
-		description: "		",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'sound', 
-		images: [
-			"images/image10.jpg"
-		]    		
-
-   	},
-
-   	{ 
-		name: 'Speaker Box', 
-		price: 85,
-		description: "		",
-		canPurchase: true,
-   		soldOut: false,
-   		category: 'sound', 
-		images: [
-			"images/image11.jpg"			
-		]    		
-
-   	},
-
-
-
-
-
-
-
-
-   	];
-
-
-
-
-	
+    
 })();
 
