@@ -1,14 +1,18 @@
 <div ng-repeat="basketItem in shoppingBasket.basket">
 	<div class="row">
-		<div class="col-xs-6"> 
-				<button class="tiny" ng-click="shoppingBasket.removeFromBasket(basketItem[0].name)">Remove</button>
+		<div class="col-md-6"> 
+				<button class="small" ng-click="shoppingBasket.removeFromBasket(basketItem[0].name)">Remove</button>
 				{{basketItem[0].name}}
 		</div>
 		
-		<div class="col-xs-2">      					
-      					<img ng-src="{{basketItem[0].images[0]}}" />      					
+		<div class="col-md-2">
+			<div class="col-lg-12">
+      					
+      					<img ng-src="{{basketItem[0].images[0]}}" />      
+      		</div>
+					
     	</div>
-    	<div class="col-xs-4">
+    	<div class="col-md-4">
 			<!-- don't need quantity at the moment
 			<bold>{{basketItem[1]}}  </bold>   -->
 			<h3 class="pull right">{{basketItem[0].price | currency}}</h3>
