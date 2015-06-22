@@ -1,0 +1,26 @@
+<div ng-repeat="basketItem in shoppingBasket.basket">
+	<ul class="row">
+		<li>
+			<div class="col-md-6"> 
+					<button class="small" ng-click="shoppingBasket.removeFromBasket(basketItem[0].name)">Remove</button>
+					{{basketItem[0].name}}
+			</div>
+			
+			
+			<div class="col-md-2"> 
+	      					
+	      					<img ng-src="{{basketItem[0].images[0]}}"/>      
+	      	</div>
+						
+	    	
+	    	<div class="col-md-4">
+				<!-- don't need quantity at the moment
+				<bold>{{basketItem[1]}}  </bold>   -->
+				{{basketItem[0].price | currency}}
+			</div>
+		</li>
+
+	</ul>
+</div>
+<h2 class="pull-right">TOTAL = {{shoppingBasket.cost | currency}}</h2>
+

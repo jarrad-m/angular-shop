@@ -1,0 +1,55 @@
+<div class="col-sm-12">
+
+	<h1>Hire Products</h1>
+  	<!-- use ng repeat here for all -->
+	<div class ng-repeat="product in store.products" ng-hide="product.soldOut ">
+
+		<div class="product col-sm-9">
+
+		  	<div  class="gallery" ng-controller="GalleryController as gallery"  ng-show="product.images.length > 0">
+  				
+  				<div class="row">
+
+      				<div class="">
+      					
+      					<img ng-src="{{product.images[gallery.current]}}" />
+    				
+    				</div>
+
+    			</div>
+        <!-- 
+				<div class="row">
+    				
+    				<div class="col-xs-3" ng-repeat="image in product.images">
+      					
+      					<img ng-src="{{image}}" />   					
+     					
+    				</div>
+
+    		</div>  -->
+
+			</div>
+
+		</div>
+
+		<div class="product col-sm-3"  >	
+
+      <div class="row">
+							
+  			<h3>{{product.name}}</h3>
+
+  		  	<bold>{{product.price | currency}}</bold>
+      </div>
+
+      <div class="row"  >
+  		  	
+  		  	<button  ng-show="product.canPurchase" ng-click="shoppingBasket.addToBasket(product, 1)">Add to Order</button>
+
+      </div>
+
+
+		</div>
+
+	</div>
+
+</div>

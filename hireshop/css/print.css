@@ -1,0 +1,31 @@
+/* Remove unwanted elements */
+#header, #nav, .noprint, #tab-title
+{
+display: none;
+}
+
+/* Ensure the content spans the full width */
+div
+{
+width: 100%; margin: 0; float: none;
+}
+
+/* Change text colour to black (useful for light text on a dark background) */
+.lighttext
+{
+color: #000 
+}
+
+/* Improve colour contrast of links */
+a:link, a:visited, img, button
+{
+display: none;
+}
+
+ul
+{
+list-style-type: none;
+padding: 0;
+margin: 0;
+text-align: right;
+}
